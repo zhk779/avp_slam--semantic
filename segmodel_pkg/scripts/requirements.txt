@@ -1,0 +1,10 @@
+pandas
+opencv-python
+pyyaml
+tqdm
+tabulate
+numpy
+scipy 
+matplotlib
+tensorboard
+fvcore

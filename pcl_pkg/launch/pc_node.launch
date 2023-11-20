@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="pcl_pkg" type="pointcloud_node" name="pointcloud_node" />
+
+</launch>

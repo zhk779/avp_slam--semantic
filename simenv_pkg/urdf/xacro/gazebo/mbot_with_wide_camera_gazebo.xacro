@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find simenv_pkg)/urdf/xacro/gazebo/mbot_base_gazebo.xacro" />
+    <xacro:include filename="$(find simenv_pkg)/urdf/xacro/sensors/wide_camera_gazebo.xacro" />
+
+    <xacro:property name="camera_offset_x" value="2.215" />
+    <xacro:property name="camera_offset_y" value="0.87" />
+    <xacro:property name="camera_vertical_offset" value="0.37" />
+
+    <xacro:mbot_base_gazebo/>
+
+    <!-- Camera -->
+    <joint name="camera_front_joint" type="fixed">
+        <origin xyz="${camera_offset_x} 0 ${camera_vertical_offset}" rpy="0 0.8 0" />
+        <parent link="base_link"/>
+        <child link="camera_front_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="camera_front"/>
+
+    <joint name="camera_back_joint" type="fixed">
+        <origin xyz="-${camera_offset_x} 0 ${camera_vertical_offset}" rpy="0 0.8 3.14" />
+        <parent link="base_link"/>
+        <child link="camera_back_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="camera_back"/>
+
+    <joint name="camera_left_joint" type="fixed">
+        <origin xyz="0 ${camera_offset_y} ${camera_vertical_offset}" rpy="0 0.8 1.57" />
+        <parent link="base_link"/>
+        <child link="camera_left_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="camera_left"/>
+
+    <joint name="camera_right_joint" type="fixed">
+        <origin xyz="0 -${camera_offset_y} ${camera_vertical_offset}" rpy="0 0.8 -1.57" />
+        <parent link="base_link"/>
+        <child link="camera_right_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="camera_right"/>
+
+</robot>

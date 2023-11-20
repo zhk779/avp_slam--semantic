@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="ipm_pkg" type="ipm_node" name="ipm_node" />
+
+</launch>
